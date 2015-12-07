@@ -7,8 +7,6 @@
 //data between the view and controller
 main_module.controller('controllerLogin',function($scope,loginFactory){
     
-    //var user = $scope.user;
-    //$scope.pass = "halituli";
     
     //This is called when login button is pressed in partial_login.html
     $scope.loginClicked = function(){
@@ -20,7 +18,18 @@ main_module.controller('controllerLogin',function($scope,loginFactory){
             password:$scope.pass
         }
         
-        loginFactory.startLogin(temp);
+        var waitPromise = loginFactory.startLogin(temp);
+        
+        //Wait the response from server
+        waitPromise.then(function(data){
+            console.log('Success');
+            //code inside this block will be called when success response
+            //from server receives
+        },function(data){
+            console.log('fail');
+            console.log(data);
+            $('.error').text('Wrong username or password!');             
+        });
     }
     
     $scope.registerClicked = function(){
