@@ -1,0 +1,17 @@
+<h1>Here is the tabel data of your friends</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat='person in friendData'>
+            <td>{{person.name}}</td>
+            <td>{{person.address}}</td>
+            <td>{{person.age}}</td>
+        </tr>
+    </tbody>
+</table>
