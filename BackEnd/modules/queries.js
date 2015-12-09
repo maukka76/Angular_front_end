@@ -104,14 +104,13 @@ exports.updatePerson = function(req,res){
   *by begin letters of name
   */
 exports.findPersonsByName = function(req,res){
-    
-    var name = req.params.nimi.split("=")[1];
-    var username = req.params.username.split("=")[1];
 
-    db.Friends.find({username:username}).
+    var name = req.query.name;
+
+    db.Friends.findOne({username:req.session.kayttaja}).
         populate({path:'friends',match:{name:{'$regex':'^' + name,'$options':'i'}}}).
             exec(function(err,data){
-        res.send(data[0].friends);
+        res.send(data.friends);
     });
     
 }

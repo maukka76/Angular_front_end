@@ -64,6 +64,12 @@ main_module.factory('friendDataFactory',function($resource,$http){
         return resource.post(data).$promise;
     }
     
+    factory.search = function(term){
+        
+        var resource = $resource('/persons/search/',{name:term},{'get':{method:'GET'}});
+        return resource.query().$promise;
+    }
+    
     return factory;
     
 });

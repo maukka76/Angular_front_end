@@ -14,4 +14,13 @@ main_module.controller('friendDataController',function($scope,friendDataFactory,
         
         $scope.friendData = dataArray;
     }
+    
+    $scope.search = function(){
+        console.log('search pressed');
+        friendDataFactory.search($scope.search_term).then(function(data){
+            console.log(data);
+            $scope.friendData = data;
+            
+        });
+    }
 });

@@ -5,13 +5,13 @@ var router = express.Router();
 
 //Handle GET requets for /persons context
 router.get('/',function(req,res){
-    
+    console.log('Bacic get route called');
     db.getAllPersons(req,res);
 });
 
 
-router.get('/:nimi/:username',function(req,res){
-    
+router.get('/search',function(req,res){
+    console.log('Router for query called');
     db.findPersonsByName(req,res);
 });
 

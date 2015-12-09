@@ -25,11 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(function(req,res,next){
     
-    console.log(req.method);
-    console.log(req.path);
-    console.log(__dirname);
-    console.log(req.body);
-    console.log(req.session);
+    //console.log(req.method);
+    //console.log(req.path);
+    //console.log(__dirname);
+    //console.log(req.body);
+    //console.log(req.session);
     //console.log(database.Person);
     //database.myFunction();
     //Send request forward in stack
@@ -45,6 +45,8 @@ app.use('/FrontEnd/module',express.static(path.join(__dirname, '../FrontEnd/modu
 app.use('/FrontEnd/controllers',express.static(path.join(__dirname, '../FrontEnd/controllers')));
 
 app.use('/FrontEnd/factories',express.static(path.join(__dirname, '../FrontEnd/factories')));
+
+app.use('/FrontEnd/fonts',express.static(path.join(__dirname, '../FrontEnd/fonts')));
 
 //==============================OUR REST API MIDDLEWARES======================================//
 app.use('/persons',person);

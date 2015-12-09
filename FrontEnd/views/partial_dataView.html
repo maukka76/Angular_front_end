@@ -4,6 +4,12 @@
 <div class='table_container'>
     <h1>Your friends...</h1>
     <p>To edit information, click the row</p>
+    <p>Search persons...empty search will fetch all your friends</p>
+    <input type="search" class="form-control" value="Search" ng-model='search_term'/><br/>
+    <button class="btn btn-default" value="Search" ng-click='search()'>
+        <span class="glyphicon glyphicon-search"></span>
+        Search
+    </button>
     <table class="table table-hover">
         <thead>
             <tr>
