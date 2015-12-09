@@ -26,7 +26,7 @@ router.put('/',function(req,res){
     db.updatePerson(req,res);
 });
 
-router.delete('/:id/:username',function(req,res){
+router.delete('/',function(req,res){
     db.deletePerson(req,res);
 });
 

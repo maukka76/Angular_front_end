@@ -5,7 +5,7 @@
 //name when you want to use this controller in some view
 //The $scope object is the glue between the view and controller. You use this object to transfer
 //data between the view and controller
-main_module.controller('controllerLogin',function($scope,loginFactory,$location){
+main_module.controller('controllerLogin',function($scope,loginFactory,$location,Flash){
     
     
     //This is called when login button is pressed in partial_login.html
@@ -26,7 +26,7 @@ main_module.controller('controllerLogin',function($scope,loginFactory,$location)
             //code inside this block will be called when success response
             //from server receives
         },function(data){
-            $('.error').text('Wrong username or password!');             
+            Flash.create('danger', 'Wrong user name or password given', 'custom-class');            
         });
     }
     
@@ -40,15 +40,16 @@ main_module.controller('controllerLogin',function($scope,loginFactory,$location)
         var response = loginFactory.startRegister(temp);
         
         response.then(success,error)
-    }   
+    }
+    
+    function success(data){
+    
+        Flash.create('success', 'New user added!', 'custom-class'); 
+    }
+
+    function error(data){
+
+        Flash.create('danger', 'Username already in use!', 'custom-class');
+    }
 });
 
-function success(data){
-    
-    alert('New person registered. You can now login with your credintentials');
-}
-                                     
-function error(data){
-    
-    alert('Registering person failed. Username already in use');
-}

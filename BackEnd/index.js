@@ -52,4 +52,13 @@ app.use('/friends',user);
 
 //=====================ROUTERS============================
 
+app.get('/logout',function(req,res){
+    
+    req.session.destroy();
+    res.redirect('/');
+});
+
+
+
+
 app.listen(3000);
