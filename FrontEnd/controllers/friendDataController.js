@@ -2,14 +2,16 @@ main_module.controller('friendDataController',function($scope,friendDataFactory,
     
     console.log('friendDataController loaded');
     
-    friendDataFactory.getFriendData(function(dataArray){
-        
-        $scope.friendData = dataArray;
-    });
+    friendDataFactory.getFriendData(dataCallback);
     
     $scope.rowCliked = function(id){
         
         friendDataFactory.selected_id = id;
         $location.path('/edit').replace();
-    }   
+    }
+    
+    function dataCallback(dataArray){
+        
+        $scope.friendData = dataArray;
+    }
 });

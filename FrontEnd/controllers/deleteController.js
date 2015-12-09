@@ -1,7 +1,9 @@
 main_module.controller('deleteController',function($scope,friendDataFactory,Flash,$location){
     
     $scope.deleteArray = [];
+    
     friendDataFactory.getFriendData(function(dataArray){
+        
         $scope.friendData = dataArray;
     });
     
@@ -11,9 +13,6 @@ main_module.controller('deleteController',function($scope,friendDataFactory,Flas
     //person we want to delete
     $scope.addToDelete = function($event,$index,id){
         
-        console.log(event);
-        console.log($index);
-        console.log(id);
         //Check if item was selected
         if(event.target.checked){
             //Add the id to our delete array

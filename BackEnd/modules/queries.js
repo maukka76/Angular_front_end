@@ -50,7 +50,13 @@ exports.saveNewPerson = function(req,res){
 }
 
 exports.deletePerson = function(req,res){
-    var toDelete = req.query.forDelete;
+    var toDelete = [];
+    if(req.query.forDelete instanceof Array)
+        toDelete = req.query.forDelete;
+    else{
+        
+       toDelete.push(req.query.forDelete); 
+    }
     console.log(toDelete);
     db.Person.remove({_id:{$in:toDelete}},function(err,data){
         
@@ -60,8 +66,13 @@ exports.deletePerson = function(req,res){
         }else{
             
             db.Friends.update({username:req.session.kayttaja},{$pull:{'friends':{$in:toDelete}}},function(err,data){
-                console.log(err);
-                res.status(200).send({messsage:'Delete success'});
+                if(err){
+                    console.log(err);
+                    res.status(500).send({messsage:err.message});
+                }else{
+                    
+                    res.status(200).send({message:'Delete success'});
+                }
             });
         }
     });
