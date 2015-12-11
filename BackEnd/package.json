@@ -6,9 +6,6 @@
         "start": "node index.js"
   },
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/maukka76/HTML5View.git"
