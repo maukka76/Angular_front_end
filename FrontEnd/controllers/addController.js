@@ -1,5 +1,8 @@
 main_module.controller('addController',function($scope,friendDataFactory,Flash){
     
+    $scope.name = "";
+    $scope.address = "";
+    $scope.age = 0;
     $scope.savePerson = function(){
         $('#save').attr("disabled", true);
         var temp = {
@@ -8,9 +11,15 @@ main_module.controller('addController',function($scope,friendDataFactory,Flash){
             address:$scope.address,
             age:$scope.age
         }
-        friendDataFactory.insertData(temp).then(function(data){
+        if(temp.name.length === 0 || temp.address.length === 0 || temp.age.length === 0){
             
-            friendDataFactory.friendsArray.push(data.data);
+            alert('Need more data!');
+            return;
+        }
+        
+        friendDataFactory.insertData(temp).then(function(response){
+            
+            friendDataFactory.friendsArray.push(response.data);
             Flash.create('success', 'New friend added!', 'custom-class');
             $scope.name = "";
             $scope.address = "";
