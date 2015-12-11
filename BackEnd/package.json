@@ -2,6 +2,9 @@
   "name": "html5view",
   "version": "0.0.1",
   "description": "RESTful server for person app",
+  "scripts": {
+        "start": "node index.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
