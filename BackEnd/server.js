@@ -7,8 +7,7 @@ var queries = require('./modules/queries');
 var person = require('./modules/person'); 
 var user = require('./modules/user');
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+
 
 //This is used for createing a secret key value
 //for our session cookie
@@ -17,6 +16,9 @@ var uuid = require('uuid');
 var session = require('express-session');
 
 var app = express();
+
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 //=====================Middlewares========================
 
 app.use(session({
@@ -64,9 +66,22 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 
+//This router checks if client is logged in or not
+app.get('/isLogged',function(req,res){
+    //User is logged in if session contains kayttaja attribute
+    if(req.session.kayttaja){
+        res.status(200).send([{status:'Ok'}]);   
+    }
+    else{
+        
+       res.status(401).send([{status:'Unauthorized'}]);  
+    }
+});
+
+
+
 
 
 http.createServer(app).listen(app.get('port') ,app.get('ip'), function () {
     console.log("Express server listening at %s:%d ", app.get('ip'),app.get('port'));
-    server();
 });

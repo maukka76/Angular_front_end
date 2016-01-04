@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "RESTful server for person app",
   "scripts": {
-        "start": "node /BackEnd/server.js"
+        "start": "node ./BackEnd/server.js"
   },
   "main": "server.js",
   "repository": {

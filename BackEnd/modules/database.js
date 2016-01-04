@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var db_name = oma;
+var db_name = "oma";
 var mongodb_connection_string = 'mongodb://127.0.0.1:27017/' + db_name;
 
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
