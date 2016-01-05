@@ -66,17 +66,7 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 
-//This router checks if client is logged in or not
-app.get('/isLogged',function(req,res){
-    //User is logged in if session contains kayttaja attribute
-    if(req.session.kayttaja){
-        res.status(200).send([{status:'Ok'}]);   
-    }
-    else{
-        
-       res.status(401).send([{status:'Unauthorized'}]);  
-    }
-});
+
 
 app.use(function(req,res,next){
     //Read the token from request
@@ -107,6 +97,17 @@ app.use(function(req,res,next){
 //==============================OUR REST API MIDDLEWARES======================================//
 app.use('/persons',person);
 
+//This router checks if client is logged in or not
+app.get('/isLogged',function(req,res){
+    //User is logged in if session contains kayttaja attribute
+    if(req.session.kayttaja){
+        res.status(200).send([{status:'Ok'}]);   
+    }
+    else{
+        
+       res.status(401).send([{status:'Unauthorized'}]);  
+    }
+});
 
 https.createServer(options,app).listen(app.get('port') ,app.get('ip'), function() 
 {
