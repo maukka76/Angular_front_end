@@ -8,12 +8,16 @@ function loginRequired($q,$resource,$location){
     console.log('loginRequired Called');
     //Create a promise
     var deferred = $q.defer();
-    $resource('/isLogged').query().$promise.then(function(){
+    $resource('/isLogged').query().$promise.then(
+    //Success function
+    function(){
         //Mark the promise to be solved (or resolved)
         deferred.resolve();
         return deferred;
         
-    },function(){
+    },
+    //Fail case
+    function(){
         
         //Mark promise to be failed
         deferred.reject();
@@ -34,7 +38,6 @@ main_module.run(function($http){
 //The $routeProvider object comes from ngRoute module
 main_module.config(function($routeProvider){
     
-    //$http.defaults.headers.common['cache-control'] = 'no-cache';
     $routeProvider.when('/',{
         
         templateUrl:'partial_login.html',

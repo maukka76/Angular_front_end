@@ -22,6 +22,9 @@ main_module.controller('controllerLogin',function($scope,loginFactory,$location,
         
         //Wait the response from server
         waitPromise.then(function(data){
+            //Store jsonwebtoken
+            console.log(data.secret);
+            sessionStorage['token'] = data.secret;
             $location.path('/list');
             //code inside this block will be called when success response
             //from server receives
