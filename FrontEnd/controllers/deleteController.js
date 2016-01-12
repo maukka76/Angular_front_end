@@ -12,9 +12,9 @@ main_module.controller('deleteController',function($scope,friendDataFactory,Flas
     //or not. Index is the index of cliked row in table. Id is the id of 
     //person we want to delete
     $scope.addToDelete = function($event,$index,id){
-        
+        console.log(id);
         //Check if item was selected
-        if(event.target.checked){
+        if($event.target.checked){
             //Add the id to our delete array
             $scope.deleteArray.push(id);
         }
