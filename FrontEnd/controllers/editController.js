@@ -2,10 +2,10 @@ main_module.controller('editController',function($scope,friendDataFactory,$locat
     
     console.log('inside edit controller');
     var selectedFriend = friendDataFactory.getSelectedFriend();
-    $scope.navbarData = {
+	$scope.navbarData = {
 		
-		urls:['/logout','#/delete','#/insert'],
-		texts:['Logout','Delete','Insert']
+		urls:['/logout','#/delete','#/insert','#/location','http://www.kaleva.fi'],
+		texts:['Logout','Delete','Insert','Your Location','News']
 	}
     $scope.id = selectedFriend._id;
     $scope.name = selectedFriend.name;

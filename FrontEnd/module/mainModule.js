@@ -67,7 +67,11 @@ main_module.config(function($routeProvider){
         templateUrl:'partial_addView.html',
         controller:'addController',
         resolve:{loginRequired:loginRequired}
-    });
+    }).when('/location',{
+		
+		templateUrl:'here_you_are.html',
+		resolve:{loginRequired:loginRequired}
+	});
     
     
 });
