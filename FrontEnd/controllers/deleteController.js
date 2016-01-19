@@ -1,5 +1,10 @@
 main_module.controller('deleteController',function($scope,friendDataFactory,Flash,$location){
     
+	$scope.navbarData = {
+		
+		urls:['/logout','#/delete','#/insert'],
+		texts:['Logout','Delete','Insert']
+	}
     $scope.deleteArray = [];
     
     friendDataFactory.getFriendData(function(dataArray){
